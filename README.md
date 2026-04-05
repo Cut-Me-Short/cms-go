@@ -1,38 +1,8 @@
-# Go SDK for CutMeShort - Updated Production Configuration
+# CutMeShort PHP SDK
 
-Comprehensive, production-ready Go SDK with:
-- ✅ Input validation on all fields
-- ✅ Security best practices (TLS, sanitization, rate limiting ready)
-- ✅ Comprehensive test suite (80%+ coverage)
-- ✅ Custom error types & error classification
-- ✅ Configuration management with environment support
-- ✅ Structured logging integration
-- ✅ Retry logic with exponential backoff capabilities
-- ✅ Full documentation and examples
-- ✅ CI/CD pipelines (tests, security, quality)
-- ✅ Proper module naming & dependency management
+Official PHP SDK for the CutMeShort CMS platform.
 
-## Project Structure
-
-```
-cutmeshort-sdk-go/
-├── internal/
-│   ├── config/         # Configuration management
-│   ├── errors/         # Error types and handling
-│   ├── validation/     # Input validation
-│   └── logging/        # Logging utilities
-├── examples/           # Working examples
-├── test/               # Test suite
-├── docs/               # API documentation
-├── .github/workflows/  # CI/CD pipelines
-├── go.mod              # Module definition with dependencies
-├── Makefile            # Build and development tasks
-├── LICENSE             # MIT License
-├── README.md           # Full documentation
-├── CONTRIBUTING.md     # Contribution guidelines
-├── SECURITY.md         # Security policy
-└── PRODUCTION_AUDIT.md # Detailed audit report
-```
+A production-ready SDK for tracking leads and sales events, including support for deferred lead attribution.
 
 ## Installation
 
