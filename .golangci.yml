@@ -1,0 +1,111 @@
+# golangci-lint configuration
+# More info: https://golangci-lint.run/
+
+run:
+  timeout: 5m
+  deadline: 10m
+  allow-parallel-runners: true
+
+linters:
+  enable:
+    # Correctness
+    - errcheck       # unchecked errors
+    - errorlint      # error message formatting
+    - staticcheck    # static analysis
+    - ineffassign    # unused assignments
+    - unparam        # unused function parameters
+    - wastedassign   # assignments that don't affect anything
+
+    # Style
+    - stylecheck     # style guide enforcement
+    - gofmt          # code formatting
+    - golint         # linting rules
+    - goimports      # import ordering
+    - varcheck       # unused variables
+    - deadcode       # unreachable code
+
+    # Security
+    - gosec          # security issues
+    - nolintlint     # invalid linting directives
+    - unconvert      # unnecessary type conversions
+
+    # Go best practices
+    - govet          # go vet
+    - misspell       # misspelled words
+    - whitespace     # leading/trailing whitespace
+    - prealloc       # slice pre-allocation
+
+  disable-all: false
+
+linters-settings:
+  errcheck:
+    check-blank: true
+    check-type-assertions: true
+    exclude-functions:
+      - (*encoding/json.Encoder).Encode
+
+  govet:
+    enable:
+      - asmdecl
+      - assign
+      - atomic
+      - atomicalign
+      - bools
+      - buildtag
+      - cgocall
+      - composites
+      - copylocks
+      - deepequalerrors
+      - errorsas
+      - fieldalignment
+      - httpresponse
+      - ifaceassert
+      - loopclosure
+      - lostcancel
+      - nilfunc
+      - printf
+      - shift
+      - sigchanyzer
+      - stdmethods
+      - structtag
+      - tests
+      - unmarshal
+      - unreachable
+      - unsafeptr
+      - unusedresult
+
+  staticcheck:
+    checks:
+      - all
+      - -SA1019  # Using deprecated modules is ok, with reason
+
+  golint:
+    min-confidence: 0.3
+
+  goimports:
+    local-prefixes: github.com/cutmeshort/sdk-go
+
+issues:
+  # List of regexps of issue texts to exclude
+  exclude:
+    - should have a package comment
+    - "don't use ALL_CAPS in Go names"
+    - "use ALL_CAPS in Go names"
+
+  # Maximum issues count per one linter
+  max-issues-per-linter: 0
+
+  # Maximum count of issues with the same text
+  max-same-issues: 0
+
+  # Show only new issues
+  new: false
+
+  # Show the error code for each issue
+  show-code: true
+
+output:
+  formats:
+    - format: colored-line-number
+    - format: sarif
+      path: golangci-lint-report.sarif
